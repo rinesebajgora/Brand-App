@@ -40,7 +40,7 @@ export default function LoginPage() {
           gap: '16px'
         }}
       >
-        <h2 style={{ marginBottom: '20px', fontSize: '24px', fontWeight: 'bold', textAlign: 'center' }}>Login</h2>
+        <h2 style={{ marginBottom: '20px', fontSize: '24px', fontWeight: 'bold', textAlign: 'center' }}>LogIn</h2>
 
         <input
           type="email"
@@ -90,7 +90,7 @@ export default function LoginPage() {
         {error && <p style={{ color: 'red', textAlign: 'center', fontSize: '14px' }}>{error}</p>}
 
         <p style={{ textAlign: 'center', fontSize: '14px', marginTop: '12px' }}>
-          Nuk keni llogari? <Link href="/signup" style={{ color: '#2563eb', fontWeight: 'bold' }}>Signup</Link>
+          Don't have an account? <Link href="/signup" style={{ color: '#2563eb', fontWeight: 'bold' }}>SignUp</Link>
         </p>
       </form>
     </div>

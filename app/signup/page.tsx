@@ -15,8 +15,8 @@ export default function SignupPage() {
     e.preventDefault()
     setError('')
 
-    if (!email.includes('@')) { setError('Email jo valid'); return }
-    if (password.length < 6) { setError('Password min 6 karaktere'); return }
+    if (!email.includes('@')) { setError('Email not valid'); return }
+    if (password.length < 6) { setError('Password min 6 characters'); return }
 
     const { error } = await supabase.auth.signUp({
       email,
@@ -26,7 +26,7 @@ export default function SignupPage() {
 
     if (error) setError(error.message)
     else {
-      alert('Kontrollo email për verifikim')
+      alert('Control email for verification')
       router.push('/login')
     }
   }
@@ -53,10 +53,10 @@ export default function SignupPage() {
           gap: '16px'
         }}
       >
-        <h2 style={{ marginBottom: '20px', fontSize: '24px', fontWeight: 'bold', textAlign: 'center' }}>Signup</h2>
+        <h2 style={{ marginBottom: '20px', fontSize: '24px', fontWeight: 'bold', textAlign: 'center' }}>SignUp</h2>
 
         <input
-          placeholder="Emri"
+          placeholder="Name"
           value={name}
           onChange={e => setName(e.target.value)}
           style={{ padding: '12px', borderRadius: '8px', border: '1px solid #ccc', fontSize: '14px' }}
@@ -98,7 +98,7 @@ export default function SignupPage() {
         {error && <p style={{ color: 'red', textAlign: 'center', fontSize: '14px' }}>{error}</p>}
 
         <p style={{ textAlign: 'center', fontSize: '14px', marginTop: '12px' }}>
-          Ke llogari? <Link href="/login" style={{ color: '#2563eb', fontWeight: 'bold' }}>Login</Link>
+          Already have an account? <Link href="/login" style={{ color: '#2563eb', fontWeight: 'bold' }}>LogIn</Link>
         </p>
       </form>
     </div>

@@ -29,7 +29,7 @@ export default function DashboardPage() {
       const data = await res.json()
       setResponse(data.reply)
     }catch(err:any){
-      setError("Diçka shkoi gabim. Provo përsëri.")
+      setError("Something went wrong. Try again.")
     }finally{
       setLoading(false)
     }
@@ -50,14 +50,14 @@ export default function DashboardPage() {
         borderRadius:'12px',
         boxShadow:'0 4px 16px rgba(0,0,0,0.1)'
       }}>
-        <h2 style={{ fontSize:'28px', marginBottom:'12px' }}>Gjenero Post Marketingu</h2>
-        <p style={{ color:'#555', marginBottom:'20px' }}>Shkruaj shembullin e postit për brandin tënd:</p>
+        <h2 style={{ fontSize:'28px', marginBottom:'12px' }}>Generate an AI Post</h2>
+        <p style={{ color:'#555', marginBottom:'20px' }}>Write an example post about your brand:</p>
 
         <form onSubmit={handleSubmit} style={{ display:'flex', flexDirection:'column', gap:'12px' }}>
           <textarea
             value={input}
             onChange={(e)=>setInput(e.target.value)}
-            placeholder="Shembull: Krijo një post Instagrami për kafen premium"
+            placeholder="Example: Create an Instagram post about premium coffee"
             style={{ padding:'12px', borderRadius:'8px', border:'1px solid #ccc', minHeight:'100px', resize:'vertical'}}
             disabled={loading}
           />
@@ -66,7 +66,7 @@ export default function DashboardPage() {
             disabled={loading || !input.trim()}
             style={{ background:'#2563eb', color:'white', padding:'10px 16px', border:'none', borderRadius:'8px', cursor: loading?'not-allowed':'pointer'}}
           >
-            {loading ? "Po gjenerohet..." : "Gjenero Post"}
+            {loading ? "It's generating..." : "Generate Post"}
           </button>
         </form>
 
@@ -74,7 +74,7 @@ export default function DashboardPage() {
 
         {response && (
           <div style={{ marginTop:'16px', padding:'16px', background:'#e6ffed', border:'1px solid #b7f5c9', borderRadius:'8px'}}>
-            <h3 style={{ fontWeight:'bold', marginBottom:'8px'}}>Post i Gjeneruar</h3>
+            <h3 style={{ fontWeight:'bold', marginBottom:'8px'}}>Generated Post</h3>
             <p style={{ whiteSpace:'pre-wrap'}}>{response}</p>
           </div>
         )}
