@@ -6,25 +6,24 @@ const client = new Groq({
 });
 
 export async function POST(request: NextRequest) {
-
   try {
-
     const { message } = await request.json();
 
     if (!message) {
       return NextResponse.json(
-        { error: "Mesazhi është bosh" },
+        { error: "Message is empty" },
         { status: 400 }
       );
     }
 
+    // Prompt i modifikuar: kërkon anglisht
     const completion = await client.chat.completions.create({
       model: "llama-3.1-8b-instant",
       messages: [
         {
           role: "system",
           content:
-            "Ti je ekspert marketingu për social media. Gjenero një post kreativ për një brand me emoji dhe hashtags."
+            "You are a social media marketing expert. Generate a creative, engaging post in English for a brand, including relevant emojis and hashtags."
         },
         {
           role: "user",
@@ -39,13 +38,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ reply });
 
   } catch (error) {
-
     console.error("Groq API error:", error);
-
     return NextResponse.json(
-      { error: "Gabim gjatë komunikimit me AI" },
+      { error: "Error communicating with AI" },
       { status: 500 }
     );
-
   }
 }
